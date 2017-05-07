@@ -16,13 +16,13 @@ def GetInput(Info,Type="str"):
   print Info
   Input=raw_input("--> ")
   if Input=="" and Type!="Default":
-    print "该项不能为空！"
+    print "this is required!"
     return GetInput(Info,Type)
   if Type=="int":#整型
     try:
       int(Input)
     except ValueError:#数值错误
-      print "只能输入数字"
+      print "only input num"
       return GetInput(Info,Type)
   return Input
 
@@ -123,7 +123,7 @@ confs.append("max-clients %s"%MaxClients)
 
 print
 
-print "max online users num：%s 人…………OK"%MaxClients
+print "max online users num：%s …………OK"%MaxClients
 
 print 
 
