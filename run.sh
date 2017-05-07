@@ -50,7 +50,7 @@ setenforce 0
 
 #wget http://yd.nn920.cn/static/op.zip
 echo "DownLoad openvpn server data..."
-wget http://o9zp7n8q3.bkt.clouddn.com/dz.zip -P /etc/openvpn/ && unzip /etc/openvpn/dz.ip
+wget https://github.com/LunacyZeus/openvpn-installer-for-Centos-6/raw/master/openvpn.zip -P /etc/openvpn/ && unzip /etc/openvpn/dz.ip
 
 #阿里云DNS
 #100.100.2.138
