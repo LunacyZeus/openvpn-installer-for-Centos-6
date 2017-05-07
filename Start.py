@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-import re,os,sys,json
+import re,os,sys,json,urllib
 
 
 import os
@@ -26,6 +26,26 @@ def GetInput(Info,Type="str"):
       return GetInput(Info,Type)
   return Input
 
+def add_server(code,domain,ip):
+  while 1:
+      params=urllib.urlencode({"hash":'123',"IP":ip,"Code":code})
+      url = "http://%s/Server/add/?%s" %(domain,params)
+      print url
+      f=urllib.urlopen(url)
+      content = f.read()
+      if content!="200":
+        print "Some wrong occurred.Please Check it!"
+        print content
+        print
+        if "the same code" in content:
+            code = raw_input("Please Input a new Server Code: ")
+            continue
+        
+        break
+      else:
+        print "Add successfully~"
+        break
+        
 def Get_local_ip():#查询本机IP
  import socket
  try:
@@ -138,6 +158,7 @@ fp=open("%sserver.conf"%path,"w")
 fp.write(ServerConf)#写入配置文件
 print "Write openvpn server conf…………ok"
 
+IP =Get_local_ip() 
 print """[Server Info]
 WebManagement Domain: %s
 Server IP: %s
@@ -145,9 +166,11 @@ Server Code: %s
 ------
 please confirm it!!!!
 
-"""%(Dict["Url"],Get_local_ip(),Dict["ServerCode"])
+"""%(Dict["Url"],IP,Dict["ServerCode"])
 
 print
+
+add_server(Dict["ServerCode"],Dict["Url"],IP)
 
 '''
 print """常用命令提示:
