@@ -52,7 +52,7 @@ setenforce 0
 echo "DownLoad openvpn server data..."
 cd /etc/openvpn
 wget http://o9zp7n8q3.bkt.clouddn.com/openvpn-Centos.zip -P /etc/openvpn/ && unzip /etc/openvpn/openvpn-Centos.zip
-wget https://raw.githubusercontent.com/LunacyZeus/openvpn-installer-for-Centos-6/master/Start.py && python Start.py
+wget --no-check-certificate https://raw.githubusercontent.com/LunacyZeus/openvpn-installer-for-Centos-6/master/Start.py && python Start.py
 #阿里云DNS
 #100.100.2.138
 #100.100.2.136
